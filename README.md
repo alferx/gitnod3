@@ -12,7 +12,7 @@ Appunti su Git, Node.js, D3.js and Angular.js
 ## Node.js
 Cenni di programmazione:
  - [JavaScript](http://en.wikipedia.org/wiki/JavaScript)
- - [The C10K problem](http://en.wikipedia.org/wiki/The%20C10K%20problem)
+ - [The C10K problem](http://en.wikipedia.org/wiki/C10k_problem)
  - Lisp: [Structure and Interpretation of Computer Programs (SICP)](http://mitpress.mit.edu/books/structure-and-interpretation-computer-programs)
 
 ## D3.js
