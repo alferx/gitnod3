@@ -7,10 +7,10 @@ Appunti su Git, Node.js, D3.js and Angular.js
 - Angular.js
 
 ## GIT
-[gittutorial(7) Manual Page](https://www.kernel.org/pub/software/scm/git/docs/gittutorial.html)
-[try.github.io](http://try.github.io)
-[Git Flow: A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
-[Markdown](http://en.wikipedia.org/wiki/Markdown)
+- [gittutorial(7) Manual Page](https://www.kernel.org/pub/software/scm/git/docs/gittutorial.html)
+- [try.github.io](http://try.github.io)
+- [Git Flow: A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+- [Markdown](http://en.wikipedia.org/wiki/Markdown)
 
 ## Node.js
 Cenni di programmazione:
