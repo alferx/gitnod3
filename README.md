@@ -1,5 +1,5 @@
-Appunti su Git, Node.js, D3.js and Angular.js
-=============================================
+Appunti su Git, Node.js, D3.js e Angular.js
+===========================================
 
 - [Git](#git)
 - [Node.js](#nodejs)
