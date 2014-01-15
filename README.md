@@ -32,7 +32,7 @@ Cenni di programmazione:
    - [Async HTTP server](https://github.com/alferx/gitnod3/blob/master/nodejs/http.js)
    - [Execute an external command](https://github.com/alferx/gitnod3/blob/master/nodejs/execute.js)
    - [Async IPC](https://github.com/alferx/gitnod3/blob/master/nodejs/parent.js)
- - [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) e [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
+
 
 ## D3.js
 - http://d3js.org
@@ -40,3 +40,4 @@ Cenni di programmazione:
 
 ## Angular.js
 
+- [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) e [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
