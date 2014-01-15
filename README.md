@@ -14,7 +14,7 @@ Appunti su Git, Node.js, D3.js e Angular.js
     che su github sembra molto piu' conveniente usare master come branch di default, e' molto interessante la
     la sezione la sezione "Supporting branches", perche' ricapitola i comandi principali per gestire in modo
     efficace lo sviluppo (e il merge) su branch multipli
-- GitHub
+- GitHub:
   - [try.github.io](http://try.github.io): crash course di 15 minuti per
     impratichirsi con git
   - [Markdown](http://en.wikipedia.org/wiki/Markdown): uno dei linguaggi di
