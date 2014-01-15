@@ -19,7 +19,7 @@ server.on('connection', function (socket) {
 });
 
 server.on('close', function () {
-    console.info('Server in now closed');
+    console.info('Server is now closed');
 });
 
 server.on('error', function (err) {

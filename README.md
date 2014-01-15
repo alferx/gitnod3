@@ -19,6 +19,10 @@ Cenni di programmazione:
  - [The C10K problem](http://en.wikipedia.org/wiki/C10k_problem)
  - Lisp: [Structure and Interpretation of Computer Programs (SICP)](http://mitpress.mit.edu/books/structure-and-interpretation-computer-programs)
  - [Node.js API](http://nodejs.org/api/)
+   - [Async DNS request](https://github.com/alferx/gitnod3/blob/master/nodejs/dns.js)
+   - [Async HTTP server](https://github.com/alferx/gitnod3/blob/master/nodejs/http.js)
+   - [Execute an external command](https://github.com/alferx/gitnod3/blob/master/nodejs/execute.js)
+   - [Async IPC](https://github.com/alferx/gitnod3/blob/master/nodejs/parent.js)
  - [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) e [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
 
 ## D3.js
