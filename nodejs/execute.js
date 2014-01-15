@@ -14,7 +14,16 @@ fs.lstat(".git", function (error, stats) {
     // don't know how to repair the error.
     //
     if (error !== null && error.code === "ENOENT") {
+        //
+        // Perhaphs obvious, but, while here, better to add reminder: exec()
+        // on a server is good *as long as* the user cannot control the string
+        // that is passed to exec().
+        //
         child_process.exec("git init", function (error, stdout, stderr) {
+            //
+            // Note: this function is invoked after the command exited,
+            // therefore, stdout is what the program wrote on its stdout
+            //
             if (error) {
                 console.log("git init: %s", error);
                 process.exit(1);
