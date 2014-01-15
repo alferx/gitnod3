@@ -16,7 +16,7 @@ Appunti su Git, Node.js, D3.js e Angular.js
     efficace lo sviluppo (e il merge) su branch multipli
 - GitHub
   - [try.github.io](http://try.github.io): crash course di 15 minuti per
-    impratichirsi congit
+    impratichirsi con git
   - [Markdown](http://en.wikipedia.org/wiki/Markdown): uno dei linguaggi di
     markup automaticamente supportati da GitHub (per esempio, questo file
     e' scritto usando markdown)
