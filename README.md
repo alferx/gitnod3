@@ -1,10 +1,10 @@
-Appunti su Git, Node.js, D3.js and Angular.js
-=============================================
+Appunti su Git, Node.js, D3.js e Angular.js
+===========================================
 
-- Git
-- Node.js
-- D3.js
-- Angular.js
+- [Git](#git)
+- [Node.js](#nodejs)
+- [D3.js](#d3js)
+- [Angular.js](#angularjs)
 
 ## GIT
 [Markdown](http://en.wikipedia.org/wiki/Markdown)
