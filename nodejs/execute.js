@@ -9,6 +9,10 @@ var fs = require("fs");
 
 fs.lstat(".git", function (error, stats) {
 
+    //
+    // Either it's ENOENT (no such file or directory), or we
+    // don't know how to repair the error.
+    //
     if (error !== null && error.code === "ENOENT") {
         child_process.exec("git init", function (error, stdout, stderr) {
             if (error) {
@@ -18,7 +22,6 @@ fs.lstat(".git", function (error, stats) {
             console.log("%s", stdout.trim());
         });
         process.exit(0);
-
     } else if (error !== null) {
         console.warn("unexpected error: %s", error);
         process.exit(1);
