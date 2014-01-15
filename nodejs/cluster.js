@@ -1,10 +1,13 @@
 // Adapted by Giuseppe Futia from the node.js documentation
 
-/*   Running node shares port 8000 between the workers:
-     NODE_DEBUG=cluster node cluster.js
-
-     It does not work on Windows!
-*/
+/*
+ * Running node shares port 8000 between the workers, do
+ * the following to see all the messages they exchange:
+ *
+ *   NODE_DEBUG=cluster node cluster.js
+ *
+ * NOTE: It does not work on Windows!
+ */
 
 /*jslint node: true */
 
