@@ -2,6 +2,10 @@
 
 /*jslint node: true */
 
+//
+// This is the child script that parent.js executes.
+//
+
 "use strict";
 
 process.on("message", function (message, handle) {
