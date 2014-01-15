@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+	<head>
+    	<title>Circle Transition</title>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	</head>
+  	<body>	
+  	
+  	</body>
+  	<script type="text/javascript">
+  		var scale = 7;
+
+  		var svg = d3.select("body").append("svg")
+	  		.attr('id','mySVG')
+	  		.attr('width', '100%')
+	  		.attr('height', '100%');
+
+	  	var circle = svg.selectAll('circle')
+   		 	.data([40, 100, 160])
+    		.enter()
+    		.append('circle')
+        	.attr('cx', function(d) { return d; })
+        	.attr('cy', function(d) { return d; })
+        	.attr('r', 0)
+        	.attr('fill', 'red');
+
+		d3.selectAll("circle").transition()
+    		.duration(750)
+   			.delay(function(d, i) { return i * 10; })
+    		.attr("r", function(d) { return Math.sqrt(d * scale); });
+
+    	
+    	setTimeout( function () {
+	    	var circle_mod = svg.selectAll("circle")
+	    	    .data([500,100,40,300]);   
+
+			circle_mod.exit().remove();
+
+			circle_mod.enter().append("circle")
+	    		.attr("r", 0)
+	    		.attr('fill', 'blue');
+
+			circle_mod
+				.transition()
+	    	    .duration(750)
+   				.delay(function(d, i) { return i * 10; })
+   				.attr("cx", function(d) { return d; })
+    			.attr("cy", function(d) { return d; })
+    			.attr("r", function(d) { return Math.sqrt(d * scale); })}
+    	, 3000)
+    			
+  	</script>
+</html>

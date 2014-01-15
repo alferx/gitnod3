@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+	<head>
+    	<title>Enter new data</title>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	</head>
+  	<body>
+  	<p></p>
+  	<p></p>	
+  	<p></p>	
+  	
+  	</body>
+  	<script type="text/javascript">
+
+		var p = d3.select("body").selectAll("p")
+		    .data([4, 8, 15, 16, 23, 42])
+		    .text(String);
+
+		// Enter… No data biniding
+		p.enter().append("p")
+		    .text(String);
+
+  	</script>
+</html>
