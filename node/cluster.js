@@ -2,7 +2,7 @@
 
 /*   Running node shares port 8000 between the workers:
      NODE_DEBUG=cluster node cluster.js
-     
+
      It does not work on Windows!
 */
 
@@ -20,7 +20,7 @@ if (cluster.isMaster) {
         cluster.fork();
     }
     cluster.on('exit', function(worker, code, signal) {
-        console.log('worker ' + worker.process.pid + ' died');  
+        console.log('worker ' + worker.process.pid + ' died');
     });
 
 } else {
