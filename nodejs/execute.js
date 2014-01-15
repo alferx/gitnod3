@@ -24,6 +24,13 @@ fs.lstat(".git", function (error, stats) {
         process.exit(1);
     }
 
+    //
+    // XXX: for correctness, here we should make sure that `.git'
+    // is indeed a directory (in particular, we should ensure that
+    // `.git' is not a symbolic linl -- which is why we used the
+    // lstat(2) in the first place).
+    //
+
     child_process.exec("git status", function (error, stdout, stderr) {
         if (error) {
             console.log("git status: %s", error);
