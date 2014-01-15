@@ -19,14 +19,14 @@ if (cluster.isMaster) {
     for (var i = 0; i < numCPUs; i++) {
         cluster.fork();
     }
-    cluster.on('exit', function(worker, code, signal) {
+    cluster.on('exit', function (worker, code, signal) {
         console.log('worker ' + worker.process.pid + ' died');
     });
 
 } else {
     // Workers can share any TCP connection
-    // In this case its a HTTP server
-    http.createServer(function(req, res) {
+    // In this case it is a HTTP server
+    http.createServer(function (req, res) {
         res.writeHead(200);
         res.end("hello world\n");
     }).listen(8000);
