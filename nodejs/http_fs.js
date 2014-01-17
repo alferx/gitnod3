@@ -11,6 +11,13 @@ require('http').createServer(function (req, res) {
     var file = path.normalize('./http_files/' + req.url);
     console.info('Trying to serve file ' + file + '...');
 
+    //
+    // FIXME: here we should guarantee that the path is below
+    // the document root (http_files) and that it is not a
+    // symbolic link (or, if it is a symbolic link, that it
+    // points inside the document root).
+    //
+
     function reportError(err) {
         console.error(err);
         res.writeHead(500);

@@ -1,10 +1,14 @@
 // Adapted by Giuseppe Futia from the node.js documentation
 
-/*   Running node shares port 8000 between the workers:
-     NODE_DEBUG=cluster node cluster.js
-
-     It does not work on Windows!
-*/
+/*
+ * Running node shares port 8000 between the workers; do
+ * the following to see the messages that the parent process
+ * exchange with the workers:
+ *
+ *   NODE_DEBUG=cluster node cluster.js
+ *
+ * NOTE: It does not work on Windows!
+ */
 
 /*jslint node: true */
 
@@ -19,14 +23,14 @@ if (cluster.isMaster) {
     for (var i = 0; i < numCPUs; i++) {
         cluster.fork();
     }
-    cluster.on('exit', function(worker, code, signal) {
+    cluster.on('exit', function (worker, code, signal) {
         console.log('worker ' + worker.process.pid + ' died');
     });
 
 } else {
     // Workers can share any TCP connection
-    // In this case its a HTTP server
-    http.createServer(function(req, res) {
+    // In this case it is a HTTP server
+    http.createServer(function (req, res) {
         res.writeHead(200);
         res.end("hello world\n");
     }).listen(8000);

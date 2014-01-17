@@ -16,4 +16,8 @@ http.createServer(function (request, response) {
     response.end("Hello World\n");
 }).listen(1337, "127.0.0.1");
 
+//
+// FIXME: this message should be printed in response to the
+// "listening" event (see tcp.js) rather than unconditionally
+//
 console.info("Server running at http://127.0.0.1:1337/");
