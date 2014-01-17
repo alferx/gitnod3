@@ -7,10 +7,19 @@ Appunti su Git, Node.js, D3.js e Angular.js
 - [Angular.js](#angularjs)
 
 ## GIT
-- [gittutorial(7) Manual Page](https://www.kernel.org/pub/software/scm/git/docs/gittutorial.html)
-- [try.github.io](http://try.github.io)
-- [Git Flow: A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
-- [Markdown](http://en.wikipedia.org/wiki/Markdown)
+- Git in generale:
+  - [gittutorial(7) Manual Page](https://www.kernel.org/pub/software/scm/git/docs/gittutorial.html): utile per
+    avere un recap dei comandi principali e delle attivita' principali
+  - [Git Flow: A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/): posto
+    che su github sembra molto piu' conveniente usare master come branch di default, e' molto interessante la
+    la sezione la sezione "Supporting branches", perche' ricapitola i comandi principali per gestire in modo
+    efficace lo sviluppo (e il merge) su branch multipli
+- GitHub:
+  - [try.github.io](http://try.github.io): crash course di 15 minuti per
+    impratichirsi con git
+  - [Markdown](http://en.wikipedia.org/wiki/Markdown): uno dei linguaggi di
+    markup automaticamente supportati da GitHub (per esempio, questo file
+    e' scritto usando markdown)
 
 ## Node.js
 Cenni di programmazione:
@@ -23,7 +32,7 @@ Cenni di programmazione:
    - [Async HTTP server](https://github.com/alferx/gitnod3/blob/master/nodejs/http.js)
    - [Execute an external command](https://github.com/alferx/gitnod3/blob/master/nodejs/execute.js)
    - [Async IPC](https://github.com/alferx/gitnod3/blob/master/nodejs/parent.js)
- - [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) e [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
+
 
 ## D3.js
 - http://d3js.org
@@ -31,3 +40,4 @@ Cenni di programmazione:
 
 ## Angular.js
 
+- [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) e [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
