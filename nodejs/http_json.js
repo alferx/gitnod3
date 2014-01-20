@@ -24,6 +24,6 @@ require('http').createServer(function (req, res) {
             res.end(data);
         }
     });
-}).listen(4000);
+}).listen(54000);
 
-console.info('Server running at http://localhost:4000/');
+console.info('Server running at http://localhost:54000/');
