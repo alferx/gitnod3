@@ -119,4 +119,3 @@ Cenni di programmazione:
   nella definizione della funzione controller
 
 - Hands-on
-- 
