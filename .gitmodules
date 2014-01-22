@@ -1,0 +1,3 @@
+[submodule "angularjs/spa-angularjs"]
+	path = angularjs/spa-angularjs
+	url = https://github.com/servetti-polito/spa-angularjs
