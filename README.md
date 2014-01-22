@@ -40,4 +40,26 @@ Cenni di programmazione:
 
 ## Angular.js
 
-- [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) e [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
+- Concetti correlati
+
+  - [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)
+
+  - [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
+
+- Carrellata iniziale
+
+  - Model-View-Controller lato client, in Javascript
+
+  - Gestione del routing, perche' non devi piu' richiedere
+    pagine diverse al server
+
+  - Di solito ogni vista ha il suo controllore
+
+  - Provider, factory, service
+
+  - Come passare da una applicazione locale e standalone a una
+    applicazione che parla con Node.js
+
+  - Twitter bootstrap
+
+
