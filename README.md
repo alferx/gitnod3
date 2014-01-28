@@ -35,8 +35,11 @@ Cenni di programmazione:
 
 
 ## D3.js
-- http://d3js.org
-- http://bost.ocks.org/mike/selection/
+- [Introduzione ai concetti generali di D3.js] (http://d3js.org)
+- [Vari tutorial per comprendere i concetti generali] (https://github.com/mbostock/d3/wiki/Tutorials)
+  - [Thinking with Joins] (http://bost.ocks.org/mike/join/): utile a chiarire il funzionamento di *.enter()* e *.exit()* per l'aggiornamento degli elementi visivi che rappresentano i dati
+  - [How Selections Work] (http://bost.ocks.org/mike/selection/): utile a chiarire il funzionamento di *d3.select()* e *d3.selectAll()*. In questo tutorial viene spiegato molto bene il concetto di binding dei dati con gli elementi del DOM
+- [Bubble Chart] (http://bl.ocks.org/mbostock/4063269): codice di esempio utilizzato per l'esercizio finale sulla visualizzazione delle informazioni relative alle dimensioni dei file contenuti in una cartella.
 
 ## Angular.js
 
