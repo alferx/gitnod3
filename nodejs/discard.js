@@ -23,7 +23,8 @@ var unixSocketPath = null;
 try {
     getopt.setopt("A:p:U:");
 } catch (error) {
-    console.error("usage: node discard.js [-A address] [-p port] [-U socket]");
+    console.info("setopt error");
+    console.error("usage: nodejs discard.js [-A address] [-p port] [-U socket]");
     process.exit(1);
 }
 

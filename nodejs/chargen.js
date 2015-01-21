@@ -15,7 +15,7 @@ var unixSocketPath = null;
 try {
     getopt.setopt("A:p:U:");
 } catch (error) {
-    console.error("usage: node echo.js [-A address] [-p port] [-U socket]");
+    console.error("usage: nodejs echo.js [-A address] [-p port] [-U socket]");
     process.exit(1);
 }
 
