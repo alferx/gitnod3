@@ -16,7 +16,7 @@ var server = net.createServer(function (socket) {
     });
     socket.on("data", function (data) {
         socket.pause();
-        socket.write(data);
+        socket.end(data);                                                               
     });
     socket.on("drain", function () {
         socket.resume();
