@@ -50,10 +50,21 @@ getopt.getopt(function (name, value) {
     }
 });
 
-if (unixSocketPath === null) {
-    server.listen(listenPort, listenAddress, function () {
-        console.info("listening at %s:%s", listenAddress, listenPort);
-    });
+if (unixSocketPath !== null && listenAddress !== null) {        
+    
+        console.info("please enter an address OR a socket");
+        process.exit();
+}
+
+if (unixSocketPath === null) {                          
+    
+     if (listenAddress === null) {                                                           
+        listenAddress = "0.0.0.0";
+	}
+    
+	server.listen(listenPort, listenAddress, function () {
+    	console.info("server listening at %s:%s", listenAddress, listenPort);               
+	});
 } else {
     server.listen(unixSocketPath, function () {
         console.info("listening at %s", unixSocketPath);

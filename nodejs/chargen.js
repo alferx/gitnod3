@@ -33,7 +33,14 @@ getopt.getopt(function (name, value) {
     }
 });
 
-if (unixSocketPath === null) {
+
+if (unixSocketPath !== null && (listenAddress !== null) {                   //not sure this is right here     
+    
+    console.info("please enter an address OR a socket");
+    process.exit();
+}
+
+if (unixSocketPath === null) {                                                      
     var client = net.connect(connectPort, connectAddress);
 } else {
     var client = net.connect(unixSocketPath);
