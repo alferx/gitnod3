@@ -30,14 +30,18 @@ function server_response(req, res) {
                 if (err) {
                     return reportError(err);
                 }
+                
+                if (stat.isSymbolicLink()) {
+                	
+              	    res.writeHead(403);
+                    res.end('Forbidden');
+                }
 
                 if (stat.isDirectory()) {
-                    //res.writeHead(403);
-                    //res.end('Forbidden');
+                 
                     allFiles=[];
                     res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } );
                     res.end(JSON.stringify( d3json('./', getFiles(filepath)), null, 4));
-                    //console.info(getFiles(filepath));
                 } else {
                     var rs = fs.createReadStream(filepath);
                     rs.on('error', reportError);

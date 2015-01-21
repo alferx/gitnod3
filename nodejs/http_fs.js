@@ -24,15 +24,16 @@ require('http').createServer(function (req, res) {
         res.end('Internal Server Error');
     }
 
-    path.exists(file, function (exists) {
+    fs.exists(file, function (exists) {
+
         if (exists) {
-            fs.stat(file, function (err, stat) {
+            fs.lstat(file, function (err, stat) {                           
 
                 if (err) {
                     return reportError(err);
                 }
 
-                if (stat.isDirectory()) {
+                if (stat.isDirectory() || stat.isSymbolicLink()) {          
                     res.writeHead(403);
                     res.end('Forbidden');
                 } else {
