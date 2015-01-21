@@ -14,9 +14,6 @@ function server_response(req, res) {
     var filepath = path.normalize('./' + req.url);
     console.info('Trying to serve filepath ' + filepath + '...');
 
-    // FIXME: here we should guarantee that the path is below
-    // the document root (http_files)
-
     function reportError(err) {
         console.error(err);
         res.writeHead(500);
@@ -72,7 +69,8 @@ function getFiles(dir) {
 			allFiles.push(statFile);
 		}
 	}
-	return allFiles;
+    }
+    return allFiles;
 }
 
 // Returns json formatted data
@@ -89,7 +87,8 @@ function d3json(root_dir, files) {
 				);
 		}
 	}
-	return json;
+    }
+    return json;
 }
 
 

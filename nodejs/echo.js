@@ -38,15 +38,15 @@ try {
 
 getopt.getopt(function (name, value) {
     switch (name) {
-    case "A":
-        listenAddress = value[0];
-        break;
-    case "p":
-        listenPort = value[0];
-        break;
-    case "U":
-        unixSocketPath = value[0];
-        break;
+        case "A":
+            listenAddress = value[0];                
+            break;
+        case "p":
+            listenPort = value[0];
+            break;
+        case "U":
+            unixSocketPath = value[0];
+            break;
     }
 });
 

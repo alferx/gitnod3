@@ -21,15 +21,15 @@ try {
 
 getopt.getopt(function (name, value) {
     switch (name) {
-    case "A":
-        connectAddress = value[0];
-        break;
-    case "p":
-        connectPort = value[0];
-        break;
-    case "U":
-        unixSocketPath = value[0];
-        break;
+        case "A":
+            connectAddress = value[0];
+            break;
+        case "p":
+            connectPort = value[0];
+            break;
+        case "U":
+            unixSocketPath = value[0];
+            break;
     }
 });
 
