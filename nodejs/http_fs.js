@@ -51,12 +51,8 @@ require('http').createServer(function (req, res) {
             res.end("File not found");
         }
     });
-}).listen(8000);
+}).listen(8000, function(){
+    
+    console.info('Server running at http://localhost:8000/');           
+});
 
-
-//
-// TODO: refactor the code so that this log message is printed
-// only when we are actually listening; moreover, note that the
-// server is invoked to listen to *:8000 not 127.0.0.1:8000.
-//
-console.info('Server running at http://localhost:8000/');
