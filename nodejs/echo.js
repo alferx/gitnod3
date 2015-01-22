@@ -16,7 +16,7 @@ var server = net.createServer(function (socket) {
     });
     socket.on("data", function (data) {
         socket.pause();
-        socket.end(data);                                                               
+        socket.end(data);
     });
     socket.on("drain", function () {
         socket.resume();
@@ -52,13 +52,14 @@ getopt.getopt(function (name, value) {
 
 if (unixSocketPath !== null && listenAddress !== null) {        
     
-        console.info("please enter an address OR a socket");
-        process.exit();
+    console.info("please enter an address OR a socket");
+	console.error("usage: nodejs echo.js [-A address] [-p port] [-U socket]");
+	process.exit();
 }
 
 if (unixSocketPath === null) {                          
-    
-     if (listenAddress === null) {                                                           
+
+    if (listenAddress === null) {                                                           
         listenAddress = "0.0.0.0";
 	}
     

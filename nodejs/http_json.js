@@ -11,8 +11,9 @@ http.createServer(function (req, res) {
     
     var json, 
         body = "";
-    
-    req.setEncoding('utf8');                            //If you don't set and encoding you'll get Buffer object
+	
+	//If you don't set and encoding you'll get Buffer object
+    req.setEncoding('utf8');                            
 
     req.on('data', function (data) {                                    
 		

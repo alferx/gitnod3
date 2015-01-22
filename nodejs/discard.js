@@ -23,12 +23,11 @@ var unixSocketPath = null;
 try {
     getopt.setopt("A:p:U:");
 } catch (error) {
-    console.info("setopt error");
     console.error("usage: nodejs discard.js [-A address] [-p port] [-U socket]");
     process.exit(1);
 }
 
-getopt.getopt(function (name, value) {                                                      
+getopt.getopt(function (name, value) {
     switch (name) {
         case "A":
             listenAddress = value[0];
