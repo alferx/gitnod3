@@ -30,7 +30,7 @@ function server_response(req, res) {
                 
                 if (stat.isSymbolicLink()) {
                 	
-              	    res.writeHead(403);
+					res.writeHead(403);
                     res.end('Forbidden');
                 }
 
