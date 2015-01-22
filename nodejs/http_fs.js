@@ -27,19 +27,20 @@ require('http').createServer(function (req, res) {
                 if (err) {
                     return reportError(err);
                 }
-
-                if (stat.isDirectory() || stat.isSymbolicLink()) {          
-                    res.writeHead(403);
-                    res.end('Forbidden');
-                } else {
-                    var rs = fs.createReadStream(file);
+				
+				if (stat.isFile()) {
+					var rs = fs.createReadStream(file);
 
                     rs.on('error', reportError);
 
                     res.writeHead(200);
 
                     rs.pipe(res);
-                }
+				} else {
+					res.writeHead(403);
+                    res.end('Forbidden');
+				}
+
             });
         } else {
             res.writeHead('404');
