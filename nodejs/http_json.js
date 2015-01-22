@@ -7,26 +7,26 @@
 var http = require('http');
 
 
-http.createServer(function (req, res) {                                 
+http.createServer(function (req, res) {
     
-    var json, 
+    var json,
         body = "";
 	
 	//If you don't set and encoding you'll get Buffer object
-    req.setEncoding('utf8');                            
+    req.setEncoding('utf8');
 
-    req.on('data', function (data) {                                    
+    req.on('data', function (data) {
 		
 	body = body.concat("", data);
         console.log('data added');
     });
     
-    req.on('end', function () {                                         
+    req.on('end', function () {
         
         console.log('req end');
         
         try {
-            json = JSON.parse(body);                                    
+            json = JSON.parse(body);
         } catch (e) {
             console.info('Content-Type is not application/json');
             res.writeHead(400, {'Content-Type': 'text/plain'});
@@ -34,7 +34,7 @@ http.createServer(function (req, res) {
             return;
         }
         
-        console.info("Send ", body);                                
+        console.info("Send ", body);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(body);
          

@@ -13,9 +13,9 @@ http.createServer(function (request, response) {
         console.info("Header: %s => %s", key, request.headers[key]);
     }
 
-    response.writeHead(200, {"Content-Type": "text/plain"});           
+    response.writeHead(200, {"Content-Type": "text/plain"});
     response.end("Hello World\n");
 }).listen(51337, "127.0.0.1", function(){
-    
-    console.info('Server running at http://127.0.0.1:51337/');           
+
+    console.info('Server running at http://127.0.0.1:51337/');     
 });

@@ -9,7 +9,7 @@ var fs = require('fs');
 
 require('http').createServer(function (req, res) {
 
-    var file = path.normalize('./http_files/' + req.url);               
+    var file = path.normalize('./http_files/' + req.url);
     console.info('Trying to serve file ' + file + '...');
 
     function reportError(err) {
@@ -22,7 +22,7 @@ require('http').createServer(function (req, res) {
     fs.exists(file, function (exists) {
 
         if (exists) {
-            fs.lstat(file, function (err, stat) {                           
+            fs.lstat(file, function (err, stat) {
 
                 if (err) {
                     return reportError(err);
@@ -47,8 +47,8 @@ require('http').createServer(function (req, res) {
             res.end("File not found");
         }
     });
-}).listen(8000, function(){
+}).listen(8000, function () {
     
-    console.info('Server running at http://localhost:8000/');           
+    console.info('Server running at http://localhost:8000/');
 });
 

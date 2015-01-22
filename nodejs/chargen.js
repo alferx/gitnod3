@@ -40,7 +40,7 @@ if (unixSocketPath !== null && listenAddress !== null) {                   //not
     process.exit(1);
 }
 
-if (unixSocketPath === null) {                                                      
+if (unixSocketPath === null) {
     var client = net.connect(connectPort, connectAddress);
 } else {
     var client = net.connect(unixSocketPath);

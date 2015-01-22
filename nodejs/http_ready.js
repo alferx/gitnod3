@@ -36,9 +36,9 @@ function server_response(req, res) {
 
                 if (stat.isDirectory()) {
                  
-                    allFiles=[];
-                    res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } );
-                    res.end(JSON.stringify( d3json('./', getFiles(filepath)), null, 4));
+                    allFiles = [];
+                    res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify(d3json('./', getFiles(filepath)), null, 4));
                 } else {
                     var rs = fs.createReadStream(filepath);
                     rs.on('error', reportError);
@@ -51,16 +51,16 @@ function server_response(req, res) {
             res.end("File not found");
         }
     });
-};
+}
 
 // Returns array of files having { name = xxx; size = yyy }
 // Uses global allFiles var
 function getFiles(dir) {
     var files = fs.readdirSync(dir);
-	for(var i in files) {
+	for (var i in files) {
 		if(!files.hasOwnProperty(i)) continue;
 		var name = dir + '/' + files[i];
-		
+
 		if(fs.statSync(name).isDirectory()) {
 			getFiles(name);
 		} else {

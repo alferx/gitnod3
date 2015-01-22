@@ -39,7 +39,7 @@ try {
 getopt.getopt(function (name, value) {
     switch (name) {
         case "A":
-            listenAddress = value[0];                
+            listenAddress = value[0];
             break;
         case "p":
             listenPort = value[0];
@@ -50,21 +50,21 @@ getopt.getopt(function (name, value) {
     }
 });
 
-if (unixSocketPath !== null && listenAddress !== null) {        
+if (unixSocketPath !== null && listenAddress !== null) {
     
     console.info("please enter an address OR a socket");
 	console.error("usage: nodejs echo.js [-A address] [-p port] [-U socket]");
 	process.exit(1);
 }
 
-if (unixSocketPath === null) {                          
+if (unixSocketPath === null) {
 
-    if (listenAddress === null) {                                                           
+    if (listenAddress === null) {
         listenAddress = "0.0.0.0";
 	}
     
 	server.listen(listenPort, listenAddress, function () {
-    	console.info("server listening at %s:%s", listenAddress, listenPort);               
+		console.info("server listening at %s:%s", listenAddress, listenPort);
 	});
 } else {
     server.listen(unixSocketPath, function () {
