@@ -42,22 +42,22 @@ getopt.getopt(function (name, value) {
     }
 });
 
-if (unixSocketPath !== null && (listenAddress !== null) {           
+if (unixSocketPath !== null && listenAddress !== null) {           
     
-        console.info("please enter an address OR a socket");
-        console.error("usage: nodejs discard.js [-A address] [-p port] [-U socket]");
-        process.exit();
+    console.info("please enter an address OR a socket");
+    console.error("usage: nodejs discard.js [-A address] [-p port] [-U socket]");
+    process.exit();
 }
 
 if (unixSocketPath === null) {                                                              
    
-  if (listenAddress === null) {                                                           
+    if (listenAddress === null) {                                                           
         listenAddress = "0.0.0.0";
-	}
+    }
     
-	server.listen(listenPort, listenAddress, function () {
-    	console.info("server listening at %s:%s", listenAddress, listenPort);               
-	});
+    server.listen(listenPort, listenAddress, function () {
+        console.info("server listening at %s:%s", listenAddress, listenPort);               
+    });
 } else {
     server.listen(unixSocketPath, function () {
         console.info("server listening at %s", unixSocketPath);

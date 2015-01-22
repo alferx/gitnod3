@@ -56,10 +56,11 @@ function server_response(req, res) {
 // Returns array of files having { name = xxx; size = yyy }
 // Uses global allFiles var
 function getFiles(dir) {
-	var files = fs.readdirSync(dir);
+    var files = fs.readdirSync(dir);
 	for(var i in files) {
 		if(!files.hasOwnProperty(i)) continue;
 		var name = dir + '/' + files[i];
+		
 		if(fs.statSync(name).isDirectory()) {
 			getFiles(name);
 		} else {
@@ -69,7 +70,7 @@ function getFiles(dir) {
 			allFiles.push(statFile);
 		}
 	}
-    }
+   
     return allFiles;
 }
 
@@ -83,11 +84,11 @@ function d3json(root_dir, files) {
 		// FIXME: files can have extensions but we assume it not
 		if(path.extname(directories[0]) != '') {
 			json.children.push(
-					{ 'name':files[i]['name'], 'size':files[i]['size'] }
-				);
+				{ 'name':files[i]['name'], 'size':files[i]['size'] }
+			);
 		}
-	}
     }
+	
     return json;
 }
 
@@ -124,6 +125,7 @@ server.listen(port);
 //
 function serverhttp_response(req, res) {
 	console.info('Trying to serve request ' + req.url + '...');
+	
 	fs.readFile('./index.html', function(err, file) {
 		if(err) {
 			res.writeHead(500, {'Content-Type':'text/plain'});

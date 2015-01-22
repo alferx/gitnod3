@@ -34,7 +34,7 @@ getopt.getopt(function (name, value) {
 });
 
 
-if (unixSocketPath !== null && (listenAddress !== null) {                   //not sure this is right here     
+if (unixSocketPath !== null && listenAddress !== null) {                   //not sure this is right here     
     
     console.info("please enter an address OR a socket");
     process.exit();
