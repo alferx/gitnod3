@@ -6,7 +6,6 @@
 
 var http = require('http');
 
-
 http.createServer(function (req, res) {
     
     var json,
@@ -16,13 +15,11 @@ http.createServer(function (req, res) {
     req.setEncoding('utf8');
 
     req.on('data', function (data) {
-		
-	body = body.concat("", data);
+		body = body.concat("", data);
         console.log('data added');
     });
     
     req.on('end', function () {
-        
         console.log('req end');
         
         try {
@@ -37,8 +34,7 @@ http.createServer(function (req, res) {
         console.info("Send ", body);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(body);
-         
-    });
+	});
 }).listen(54000);
 
 console.info('Server running at http://localhost:54000/');

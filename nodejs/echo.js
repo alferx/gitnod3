@@ -51,7 +51,6 @@ getopt.getopt(function (name, value) {
 });
 
 if (unixSocketPath !== null && listenAddress !== null) {
-    
     console.info("please enter an address OR a socket");
 	console.error("usage: nodejs echo.js [-A address] [-p port] [-U socket]");
 	process.exit(1);

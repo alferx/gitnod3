@@ -21,7 +21,8 @@ var options = {
 var req = http.request(options, function (res) {
     console.info('STATUS:', res.statusCode);
     console.info('HEADERS:', res.headers);
-    res.setEncoding('utf8'); //If you don't set and encoding you'll get Buffer object
+	//If you don't set and encoding you'll get Buffer object
+    res.setEncoding('utf8'); 
     res.on('data', function (chunk) {
         console.info('BODY: ', chunk);
     });

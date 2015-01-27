@@ -21,7 +21,8 @@ function server_response(req, res) {
     }
 
     path.exists(filepath, function (exists) {
-        if (exists) {
+        
+		if (exists) {
             fs.lstat(filepath, function (err, stat) {
 
                 if (err) {
@@ -29,16 +30,17 @@ function server_response(req, res) {
                 }
                 
                 if (stat.isSymbolicLink()) {
-                	
-					res.writeHead(403);
+                	res.writeHead(403);
                     res.end('Forbidden');
                 }
 
                 if (stat.isDirectory()) {
-                 
-                    allFiles = [];
-                    res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-                    res.end(JSON.stringify(d3json('./', getFiles(filepath)), null, 4));
+					allFiles = [];
+					res.writeHead(200, 
+						{ 'Content-Type': 'application/json',
+							'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify(d3json('./', getFiles(filepath)), 
+						null, 4));
                 } else {
                     var rs = fs.createReadStream(filepath);
                     rs.on('error', reportError);
@@ -57,6 +59,7 @@ function server_response(req, res) {
 // Uses global allFiles var
 function getFiles(dir) {
     var files = fs.readdirSync(dir);
+	
 	for (var i in files) {
 		if(!files.hasOwnProperty(i)) continue;
 		var name = dir + '/' + files[i];
@@ -70,8 +73,7 @@ function getFiles(dir) {
 			allFiles.push(statFile);
 		}
 	}
-   
-    return allFiles;
+	return allFiles;
 }
 
 // Returns json formatted data
@@ -88,8 +90,7 @@ function d3json(root_dir, files) {
 			);
 		}
     }
-	
-    return json;
+	return json;
 }
 
 
@@ -127,6 +128,7 @@ function serverhttp_response(req, res) {
 	console.info('Trying to serve request ' + req.url + '...');
 	
 	fs.readFile('./index.html', function(err, file) {
+		
 		if(err) {
 			res.writeHead(500, {'Content-Type':'text/plain'});
 			res.end('Internal error\n');

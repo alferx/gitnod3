@@ -13,7 +13,6 @@ require('http').createServer(function (req, res) {
     console.info('Trying to serve file ' + file + '...');
 
     function reportError(err) {
-        
         console.error(err);
         res.writeHead(500);
         res.end('Internal Server Error');
@@ -30,12 +29,9 @@ require('http').createServer(function (req, res) {
 				
 				if (stat.isFile()) {
 					var rs = fs.createReadStream(file);
-
-                    rs.on('error', reportError);
-
-                    res.writeHead(200);
-
-                    rs.pipe(res);
+					rs.on('error', reportError);
+					res.writeHead(200);
+					rs.pipe(res);
 				} else {
 					res.writeHead(403);
                     res.end('Forbidden');
@@ -48,7 +44,6 @@ require('http').createServer(function (req, res) {
         }
     });
 }).listen(8000, function () {
-    
     console.info('Server running at http://localhost:8000/');
 });
 
