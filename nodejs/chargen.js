@@ -15,23 +15,30 @@ var unixSocketPath = null;
 try {
     getopt.setopt("A:p:U:");
 } catch (error) {
-    console.error("usage: node echo.js [-A address] [-p port] [-U socket]");
+    console.error("usage: nodejs echo.js [-A address] [-p port]\n"
+                + "       nodejs echo.js -U socket");
     process.exit(1);
 }
 
 getopt.getopt(function (name, value) {
     switch (name) {
-    case "A":
-        connectAddress = value[0];
-        break;
-    case "p":
-        connectPort = value[0];
-        break;
-    case "U":
-        unixSocketPath = value[0];
-        break;
+        case "A":
+            connectAddress = value[0];
+            break;
+        case "p":
+            connectPort = value[0];
+            break;
+        case "U":
+            unixSocketPath = value[0];
+            break;
     }
 });
+
+if (unixSocketPath !== null && connectAddress !== null) {
+    console.error("usage: nodejs echo.js [-A address] [-p port]\n"
+                + "       nodejs echo.js -U socket");
+    process.exit(1);
+}
 
 if (unixSocketPath === null) {
     var client = net.connect(connectPort, connectAddress);

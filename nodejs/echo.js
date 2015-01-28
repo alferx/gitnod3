@@ -15,8 +15,9 @@ var server = net.createServer(function (socket) {
         console.info("connection lost: %s:%s", remoteAddress, remotePort);
     });
     socket.on("data", function (data) {
-        socket.pause();
-        socket.write(data);
+        if (!socket.write(data)) {
+            socket.pause();  // Pause reading while writing
+        }
     });
     socket.on("drain", function () {
         socket.resume();
@@ -32,27 +33,35 @@ var unixSocketPath = null;
 try {
     getopt.setopt("A:p:U:");
 } catch (error) {
-    console.error("usage: node echo.js [-A address] [-p port] [-U socket]");
+    console.error("usage: nodejs echo.js [-A address] [-p port]\n"
+                + "       nodejs echo.js -U socket");
     process.exit(1);
 }
 
 getopt.getopt(function (name, value) {
     switch (name) {
-    case "A":
-        listenAddress = value[0];
-        break;
-    case "p":
-        listenPort = value[0];
-        break;
-    case "U":
-        unixSocketPath = value[0];
-        break;
+        case "A":
+            listenAddress = value[0];
+            break;
+        case "p":
+            listenPort = value[0];
+            break;
+        case "U":
+            unixSocketPath = value[0];
+            break;
     }
 });
 
+if (unixSocketPath !== null && listenAddress !== null) {
+    console.error("usage: nodejs echo.js [-A address] [-p port]\n"
+                + "       nodejs echo.js -U socket");
+    process.exit(1);
+}
+
 if (unixSocketPath === null) {
+    
     server.listen(listenPort, listenAddress, function () {
-        console.info("listening at %s:%s", listenAddress, listenPort);
+        console.info("server listening at %s:%s", listenAddress, listenPort);
     });
 } else {
     server.listen(unixSocketPath, function () {
