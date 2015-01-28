@@ -15,8 +15,9 @@ var server = net.createServer(function (socket) {
         console.info("connection lost: %s:%s", remoteAddress, remotePort);
     });
     socket.on("data", function (data) {
-        socket.pause();
-        socket.end(data);
+        if (!socket.write(data)) {
+            socket.pause();  // Pause reading while writing
+        }
     });
     socket.on("drain", function () {
         socket.resume();
