@@ -15,7 +15,7 @@ http.createServer(function (req, res) {
     req.setEncoding('utf8');
 
     req.on('data', function (data) {
-		body = body.concat("", data);
+		body += data;
         console.log('data added');
     });
     
