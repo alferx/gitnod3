@@ -38,8 +38,8 @@ function server_response(req, res) {
                         null, 4));
                 }
                 
-				if (stat.isFile()) {
-					var rs = fs.createReadStream(filepath);
+                if (stat.isFile()) {
+                    var rs = fs.createReadStream(filepath);
                     rs.on('error', reportError);
                     res.writeHead(200);
                     rs.pipe(res);
