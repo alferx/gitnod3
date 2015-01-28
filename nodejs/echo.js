@@ -32,7 +32,8 @@ var unixSocketPath = null;
 try {
     getopt.setopt("A:p:U:");
 } catch (error) {
-    console.error("usage: nodejs echo.js [-A address] [-p port] [-U socket]");
+    console.error("usage: nodejs echo.js [-A address] [-p port] [-U socket] \n"
+        + "       nodejs echo.js -U socket");
     process.exit(1);
 }
 
@@ -51,16 +52,12 @@ getopt.getopt(function (name, value) {
 });
 
 if (unixSocketPath !== null && listenAddress !== null) {
-    console.info("please enter an address OR a socket");
-    console.error("usage: nodejs echo.js [-A address] [-p port] [-U socket]");
+    console.error("usage: nodejs echo.js [-A address] [-p port] [-U socket] \n"
+        + "       nodejs echo.js -U socket");
     process.exit(1);
 }
 
 if (unixSocketPath === null) {
-
-    if (listenAddress === null) {
-        listenAddress = "0.0.0.0";
-    }
     
     server.listen(listenPort, listenAddress, function () {
         console.info("server listening at %s:%s", listenAddress, listenPort);

@@ -15,7 +15,7 @@ require('http').createServer(function (req, res) {
     function reportError(err) {
         console.error(err);
         res.writeHead(500);
-        res.end('Internal Server Error');
+        res.end('Internal Server Error \n');
     }
 
     fs.exists(file, function (exists) {
@@ -34,16 +34,16 @@ require('http').createServer(function (req, res) {
                     rs.pipe(res);
                 } else {
                     res.writeHead(403);
-                    res.end('Forbidden');
+                    res.end('Forbidden \n');
                 }
 
             });
         } else {
             res.writeHead('404');
-            res.end("File not found");
+            res.end("File not found \n");
         }
     });
 }).listen(8000, function () {
-    console.info('Server running at http://localhost:8000/');
+    console.info('Server running on port 8000');
 });
 

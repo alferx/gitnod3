@@ -29,11 +29,6 @@ function server_response(req, res) {
                     return reportError(err);
                 }
                 
-                if (stat.isSymbolicLink()) {
-                    res.writeHead(403);
-                    res.end('Forbidden');
-                }
-
                 if (stat.isDirectory()) {
                     allFiles = [];
                     res.writeHead(200, 
@@ -41,11 +36,16 @@ function server_response(req, res) {
                             'Access-Control-Allow-Origin': '*' });
                     res.end(JSON.stringify(d3json('./', getFiles(filepath)), 
                         null, 4));
-                } else {
-                    var rs = fs.createReadStream(filepath);
+                }
+                
+				if (stat.isFile()) {
+					var rs = fs.createReadStream(filepath);
                     rs.on('error', reportError);
                     res.writeHead(200);
                     rs.pipe(res);
+                } else {
+                    res.writeHead(403);
+                    res.end('Forbidden');   
                 }
             });
         } else {

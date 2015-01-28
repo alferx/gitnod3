@@ -11,16 +11,15 @@ http.createServer(function (req, res) {
     var json,
         body = "";
 	
-	//If you don't set and encoding you'll get Buffer object
     req.setEncoding('utf8');
 
     req.on('data', function (data) {
         body += data;
-        console.log('data added');
+        //console.log('data added');
     });
     
     req.on('end', function () {
-        console.log('req end');
+        //console.log('req end');
         
         try {
             json = JSON.parse(body);
@@ -31,7 +30,7 @@ http.createServer(function (req, res) {
             return;
         }
         
-        console.info("Send ", body);
+        console.info("Sending data");
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(body);
     });
