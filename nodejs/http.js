@@ -12,12 +12,9 @@ http.createServer(function (request, response) {
     for (var key in request.headers) {
         console.info("Header: %s => %s", key, request.headers[key]);
     }
+
     response.writeHead(200, {"Content-Type": "text/plain"});
     response.end("Hello World\n");
-}).listen(51337, "127.0.0.1");
-
-//
-// FIXME: this message should be printed in response to the
-// "listening" event (see tcp.js) rather than unconditionally
-//
-console.info("Server running at http://127.0.0.1:51337/");
+}).listen(51337, "127.0.0.1", function(){
+    console.info('Server running at http://127.0.0.1:51337/');     
+});

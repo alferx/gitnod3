@@ -14,9 +14,6 @@ function server_response(req, res) {
     var filepath = path.normalize('./' + req.url);
     console.info('Trying to serve filepath ' + filepath + '...');
 
-    // FIXME: here we should guarantee that the path is below
-    // the document root (http_files)
-
     function reportError(err) {
         console.error(err);
         res.writeHead(500);
@@ -24,68 +21,77 @@ function server_response(req, res) {
     }
 
     path.exists(filepath, function (exists) {
+        
         if (exists) {
             fs.lstat(filepath, function (err, stat) {
 
                 if (err) {
                     return reportError(err);
                 }
-
+                
                 if (stat.isDirectory()) {
-                    //res.writeHead(403);
-                    //res.end('Forbidden');
-                    allFiles=[];
-                    res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } );
-                    res.end(JSON.stringify( d3json('./', getFiles(filepath)), null, 4));
-                    //console.info(getFiles(filepath));
-                } else {
+                    allFiles = [];
+                    res.writeHead(200, 
+                        { 'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify(d3json('./', getFiles(filepath)), 
+                        null, 4));
+                }
+                
+                if (stat.isFile()) {
                     var rs = fs.createReadStream(filepath);
                     rs.on('error', reportError);
                     res.writeHead(200);
                     rs.pipe(res);
+                } else {
+                    res.writeHead(403);
+                    res.end('Forbidden\n');   
                 }
             });
         } else {
             res.writeHead('404');
-            res.end("File not found");
+            res.end("File not found\n");
         }
     });
-};
+}
 
 // Returns array of files having { name = xxx; size = yyy }
 // Uses global allFiles var
 function getFiles(dir) {
-	var files = fs.readdirSync(dir);
-	for(var i in files) {
-		if(!files.hasOwnProperty(i)) continue;
-		var name = dir + '/' + files[i];
-		if(fs.statSync(name).isDirectory()) {
-			getFiles(name);
-		} else {
-			var statFile = {};
-			statFile.name = path.normalize(name);
-			statFile.size = fs.statSync(name).size;
-			allFiles.push(statFile);
-		}
-	}
-	return allFiles;
+    var files = fs.readdirSync(dir);
+	
+    for (var i in files) {
+        
+        if(!files.hasOwnProperty(i)) continue;
+	    var name = dir + '/' + files[i];
+
+        if(fs.statSync(name).isDirectory()) {
+            getFiles(name);
+        } else {
+            var statFile = {};
+            statFile.name = path.normalize(name);
+            statFile.size = fs.statSync(name).size;
+            allFiles.push(statFile);
+        }
+    }
+    return allFiles;
 }
 
 // Returns json formatted data
 // files = array of file paths
 function d3json(root_dir, files) {
-	var json = { 'name':root_dir, 'children':[] };
+    var json = { 'name':root_dir, 'children':[] };
 
-	for(var i in files) {
-		var directories = files[i]['name'].split(path.sep);
-		// FIXME: files can have extensions but we assume it not
-		if(path.extname(directories[0]) != '') {
-			json.children.push(
-					{ 'name':files[i]['name'], 'size':files[i]['size'] }
-				);
-		}
-	}
-	return json;
+    for(var i in files) {
+        var directories = files[i]['name'].split(path.sep);
+        // FIXME: files can have extensions but we assume it not
+        if(path.extname(directories[0]) != '') {
+            json.children.push(
+                { 'name':files[i]['name'], 'size':files[i]['size'] }
+            );
+        }
+    }
+    return json;
 }
 
 
@@ -120,17 +126,19 @@ server.listen(port);
 // Setup http server
 //
 function serverhttp_response(req, res) {
-	console.info('Trying to serve request ' + req.url + '...');
-	fs.readFile('./index.html', function(err, file) {
-		if(err) {
-			res.writeHead(500, {'Content-Type':'text/plain'});
-			res.end('Internal error\n');
-		} else {
-			res.writeHead(200, {'Content-Type':'text/html' });
-			res.write(file);
-			res.end();
-		}
-	});
+    console.info('Trying to serve request ' + req.url + '...');
+	
+    fs.readFile('./index.html', function(err, file) {
+		
+        if(err) {
+            res.writeHead(500, {'Content-Type':'text/plain'});
+            res.end('Internal error\n');
+        } else {
+            res.writeHead(200, {'Content-Type':'text/html' });
+            res.write(file);
+            res.end();
+        }
+    });
 }
 
 var serverhttp = require('http').createServer(serverhttp_response);
