@@ -45,12 +45,12 @@ function server_response(req, res) {
                     rs.pipe(res);
                 } else {
                     res.writeHead(403);
-                    res.end('Forbidden');   
+                    res.end('Forbidden\n');   
                 }
             });
         } else {
             res.writeHead('404');
-            res.end("File not found");
+            res.end("File not found\n");
         }
     });
 }
