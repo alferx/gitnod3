@@ -27,15 +27,15 @@ require('http').createServer(function (req, res) {
                     return reportError(err);
                 }
 				
-				if (stat.isFile()) {
-					var rs = fs.createReadStream(file);
-					rs.on('error', reportError);
-					res.writeHead(200);
-					rs.pipe(res);
-				} else {
-					res.writeHead(403);
+                if (stat.isFile()) {
+                    var rs = fs.createReadStream(file);
+                    rs.on('error', reportError);
+                    res.writeHead(200);
+                    rs.pipe(res);
+                } else {
+                    res.writeHead(403);
                     res.end('Forbidden');
-				}
+                }
 
             });
         } else {
