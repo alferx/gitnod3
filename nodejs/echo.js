@@ -62,9 +62,9 @@ if (unixSocketPath === null) {
         listenAddress = "0.0.0.0";
     }
     
-	server.listen(listenPort, listenAddress, function () {
+    server.listen(listenPort, listenAddress, function () {
         console.info("server listening at %s:%s", listenAddress, listenPort);
-	});
+    });
 } else {
     server.listen(unixSocketPath, function () {
         console.info("listening at %s", unixSocketPath);

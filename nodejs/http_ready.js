@@ -65,7 +65,7 @@ function getFiles(dir) {
         if(!files.hasOwnProperty(i)) continue;
 	    var name = dir + '/' + files[i];
 
-		if(fs.statSync(name).isDirectory()) {
+        if(fs.statSync(name).isDirectory()) {
             getFiles(name);
         } else {
             var statFile = {};
